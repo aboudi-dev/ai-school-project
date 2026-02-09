@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Artificial Intelligence - School Project</title>
+
+<style>
+    body {
+        font-family: "Segoe UI", Arial, sans-serif;
+        margin: 0;
+        background-color: #f2f6fb;
+        color: #222;
+    }
+
+    header {
+        background: linear-gradient(90deg, #0f4c81, #1e90ff);
+        color: white;
+        padding: 25px;
+        text-align: center;
+    }
+
+    header img {
+        width: 80px;
+        margin-bottom: 10px;
+    }
+
+    section {
+        background: white;
+        margin: 20px;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        text-align: center;
+    }
+
+    h2 {
+        color: #0f4c81;
+    }
+
+    .score {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        color: #0f4c81;
+    }
+
+    .question {
+        margin-bottom: 20px;
+        text-align: left;
+    }
+
+    .question button {
+        width: 100%;
+        padding: 10px;
+        margin: 6px 0;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        background: #f7f9fc;
+        cursor: pointer;
+        font-size: 15px;
+    }
+
+    .question button:hover {
+        background-color: #e6eef7;
+    }
+
+    .correct {
+        background-color: #c8f7c5 !important;
+    }
+
+    .wrong {
+        background-color: #f7c5c5 !important;
+    }
+
+    .team-box {
+        background-color: #eef4fb;
+        padding: 20px;
+        border-left: 5px solid #0f4c81;
+        text-align: left;
+    }
+
+    footer {
+        background-color: #0f4c81;
+        color: white;
+        text-align: center;
+        padding: 15px;
+    }
+
+    /* 📱 Mobile Responsive */
+    @media (max-width: 600px) {
+        header h1 {
+            font-size: 22px;
+        }
+        section {
+            margin: 10px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <!-- Put your school logo in the same folder and name it logo.png -->
+    <img src="logo.png" alt="School Logo">
+    <h1>Artificial Intelligence (AI)</h1>
+    <p>High School Project</p>
+</header>
+
+<section>
+    <h2>About Artificial Intelligence</h2>
+    <p>
+        Artificial Intelligence (AI) is a branch of computer science that allows machines
+        to learn, think, and make decisions like humans. AI is used in education,
+        medicine, transportation, and smartphones.
+    </p>
+</section>
+
+<section>
+    <h2>AI Quiz</h2>
+    <div class="score">Score: <span id="score">0</span> / 8</div>
+
+    <div class="question">
+        <p>1. What does AI stand for?</p>
+        <button onclick="check(this, true)">Artificial Intelligence</button>
+        <button onclick="check(this, false)">Advanced Internet</button>
+    </div>
+
+    <div class="question">
+        <p>2. Which is an example of AI?</p>
+        <button onclick="check(this, false)">Calculator</button>
+        <button onclick="check(this, true)">Voice Assistant</button>
+    </div>
+
+    <div class="question">
+        <p>3. Can AI learn from data?</p>
+        <button onclick="check(this, true)">Yes</button>
+        <button onclick="check(this, false)">No</button>
+    </div>
+
+    <div class="question">
+        <p>4. Is AI used in education?</p>
+        <button onclick="check(this, true)">Yes</button>
+        <button onclick="check(this, false)">No</button>
+    </div>
+
+    <div class="question">
+        <p>5. Can AI completely replace humans?</p>
+        <button onclick="check(this, false)">Yes</button>
+        <button onclick="check(this, true)">No</button>
+    </div>
+
+    <div class="question">
+        <p>6. What is Machine Learning?</p>
+        <button onclick="check(this, true)">A way for computers to learn from data</button>
+        <button onclick="check(this, false)">A computer virus</button>
+    </div>
+
+    <div class="question">
+        <p>7. Is AI used in smartphones?</p>
+        <button onclick="check(this, true)">Yes</button>
+        <button onclick="check(this, false)">No</button>
+    </div>
+
+    <div class="question">
+        <p>8. Which job uses AI?</p>
+        <button onclick="check(this, true)">Medical diagnosis</button>
+        <button onclick="check(this, false)">Paper notebook</button>
+    </div>
+</section>
+
+<section>
+    <h2>Share This Project</h2>
+    <p>Scan the QR code to open the website:</p>
+
+    <!-- 🔁 Replace the link below with your real GitHub Pages link -->
+    <img 
+      src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://aboudi.github.io/ai-school-project"
+      alt="QR Code"
+    >
+
+    <p style="font-size:14px;color:#555;">
+        Share with friends and teachers
+    </p>
+</section>
+
+<section>
+    <h2>Our Team</h2>
+    <div class="team-box">
+        <p><strong>Group Name:</strong> AI Innovators</p>
+        <ul>
+            <li>Bournane Abde Rahim </li>
+            <li>Taleb Narimane </li>
+            <li>boukrchich Fatma zahra </li>
+        </ul>
+        <p><strong>Class:</strong> High School</p>
+        <p><strong>Teacher:</strong> Boudour Nserin</p>
+    </div>
+</section>
+
+<footer>
+    <p>Designed by Aboudi © 2026</p>
+</footer>
+
+<script>
+    let score = 0;
+
+    function check(button, correct) {
+        if (button.classList.contains("correct") || button.classList.contains("wrong")) return;
+
+        if (correct) {
+            button.classList.add("correct");
+            score++;
+        } else {
+            button.classList.add("wrong");
+        }
+        document.getElementById("score").innerText = score;
+    }
+</script>
+
+</body>
+</html>
